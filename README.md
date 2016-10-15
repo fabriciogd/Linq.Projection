@@ -1,5 +1,7 @@
 # Linq.Projection
 
-Projection for linq requests
+## Projeção para IQueryable
 
-This solution automatically map types in your DAL in a simple, efficient manner. 
+Ao escrever consultas IQueryable para obter projeções, nos deparamos com um exercício cansativo. Para resolver este problema, muitas pessoas aderem ao uso do AutoMapper, acreditando que este atinja o mesmo nivel de capacidade de uma escrita manual, poré, o AutoMapper não sabe fazer o uso do IQueryable e só trabalha com dados em memória. A soluçao apresentada permite mapear automaticamente os tipos da sua camada de acesso a dados de uma forma simples e eficiente, através de uma convenção de nomes, ou através de um mecanismo de sobreposição de expressões.
+
+## Exemplos
