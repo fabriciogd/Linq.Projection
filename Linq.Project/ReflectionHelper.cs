@@ -77,5 +77,15 @@
 
             return null;
         }
+
+        public static long GetHashKey<TSource, TDestination>()
+        {
+            return (typeof(TSource).GetHashCode() << 32) | typeof(TDestination).GetHashCode();
+        }
+
+        public static long GetHashKey(Type source, Type destination)
+        {
+            return (source.GetHashCode() << 32) | destination.GetHashCode();
+        }
     }
 }

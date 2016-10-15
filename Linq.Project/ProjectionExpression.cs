@@ -8,6 +8,8 @@
 
     public class ProjectionExpression<TSource> : IProjectionExpression<TSource>
     {
+        private static readonly Dictionary<long, Expression> _expressionCache = new Dictionary<long, Expression>();
+
         private readonly IQueryable<TSource> _source;
 
         public ProjectionExpression(IQueryable<TSource> source)
@@ -32,8 +34,19 @@
             return this._source.Select(expression);
         }
 
+        private static Expression<Func<TSource, TDest>> GetCachedExpression<TDest>()
+        {
+            var key = ReflectionHelper.GetHashKey<TSource, TDest>();
+
+            return _expressionCache.ContainsKey(key) ? _expressionCache[key] as Expression<Func<TSource, TDest>> : null;
+        }
+
         private Expression<Func<TSource, TDest>> BuildExpression<TDest>(IEnumerable<Mapping> customMappings, IEnumerable<PropertyInfo> ignoredProperties, Dictionary<int, int> parameterIndexes = null, int index = 0)
         {
+            var cachedExp = GetCachedExpression<TDest>();
+            if (cachedExp != null)
+                return cachedExp;
+
             if (parameterIndexes == null)
                 parameterIndexes = new Dictionary<int, int>();
 
@@ -56,7 +69,13 @@
                                 .ToArray()),
                     parameterExpression);
 
+            var key = ReflectionHelper.GetHashKey(sourceType, destinationType);
+
+            if (!_expressionCache.ContainsKey(key))
+                _expressionCache.Add(key, expression);
+
             return expression;
+
         }
 
         private MemberAssignment BindCustomMap(ParameterExpression parameterExpression, PropertyInfo destinationProperty, IEnumerable<Mapping> customMappings)
