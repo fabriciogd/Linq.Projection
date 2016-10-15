@@ -7,10 +7,16 @@ Ao escrever consultas IQueryable para obter projeções, nos deparamos com um ex
 ## Exemplos
 
 Mapeamento automático
+```
 context.Persons.Project().To<PersonDTO>();
+```
 
 Mapeamento customizado
+```
 context.Persons.Project().To<PersonDTO>(mapper => mapper.Map(a => a.Nome, b => b.Nome + "Teste"));
+```
 
 Ignorar mapeamento
+```
 context.Persons.Project().To<PersonDTO>(mapper => mapper.Ignore(a => a.Nome));
+```
