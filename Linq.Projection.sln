@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Linq.Projection", "Linq.Project\Linq.Projection.csproj", "{D5AF3BD8-FD93-4323-9149-0AD800FF19AD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Linq.Projection", "Linq.Projection\Linq.Projection.csproj", "{D5AF3BD8-FD93-4323-9149-0AD800FF19AD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Linq.Projection.Test", "Linq.Projection.Test\Linq.Projection.Test.csproj", "{ED1DF66F-75D9-495B-B085-2BAE0CE2F1C0}"
 EndProject

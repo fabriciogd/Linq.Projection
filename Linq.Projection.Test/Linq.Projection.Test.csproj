@@ -54,7 +54,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Linq.Project\Linq.Projection.csproj">
+    <ProjectReference Include="..\Linq.Projection\Linq.Projection.csproj">
       <Project>{d5af3bd8-fd93-4323-9149-0ad800ff19ad}</Project>
       <Name>Linq.Projection</Name>
     </ProjectReference>
